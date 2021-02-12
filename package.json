@@ -1,0 +1,29 @@
+{
+  "name": "my-todo-app",
+  "version": "1.0.0",
+  "description": "This is a personal todo application to model the Javascript syntax and logic",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack",
+    "watch": "webpack --mode development --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "create",
+    "delete",
+    "edit",
+    "update",
+    "task",
+    "todo"
+  ],
+  "author": "Apelehin Okikiola",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "css-loader": "^5.0.2",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
