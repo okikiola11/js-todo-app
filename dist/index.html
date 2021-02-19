@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo Apllication</title>
+  <link rel="stylesheet" href="../src/styles/index.css">
   <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-  integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-  crossorigin="anonymous" />
+    href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap"
+    rel="stylesheet"
+  />
 </head>
 <body>
   
   <h1 class="title"> My todo App</h1>
 
-  <div class="all-taska">
+  <div class="all-tasks">
     <h2 class="task-list-title"> My lists </h2>
-    <ul class="active-list">
-      <li class="active-list">Youtube</li>
-      <li>Work</li>
+    <ul class="task-list">
+      <li class="list-name active-list">Youtube</li>
+      <li class="list-name">Work</li>
     </ul>
 
     <form action="" class="">
@@ -27,7 +27,7 @@
       placeholder="new list name"
       aria-label="new list name">
 
-      <button class="btn list" aria-label="create new list"> + </button>
+      <button class="btn create" aria-label="create new list"> + </button>
     </form>
   </div>
 
@@ -48,18 +48,25 @@
         </div>
       </div>
 
-      <div class="new-task-creator"></div>
+      <div class="new-task-creator">
+        <form action="">
+          <input type="text"
+          class="new task"
+          placeholder="new task name"
+          aria-label="new task name" 
+          />
+          <button class="btn create"
+          aria-label="create new task"> + </button>
+        </form>
+      </div>
 
-      <div class="delete-stuff"></div>
+      <div class="delete-stuff">
+        <button class="btn delete"> Completed tasks </button>
+        <button class="btn delete"> Delete list </button>
+      </div>
     </div>
   </div>
-  
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-    crossorigin="anonymous">
-  </script>
-
+ 
   <script src="main.js"></script>
 </body>
 </html>
