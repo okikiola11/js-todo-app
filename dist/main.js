@@ -50,23 +50,13 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
 
 /***/ }),
 
-/***/ "./src/dom.js":
-/*!********************!*\
-  !*** ./src/dom.js ***!
-  \********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"projectInput\": () => (/* binding */ projectInput),\n/* harmony export */   \"addProjectBtn\": () => (/* binding */ addProjectBtn),\n/* harmony export */   \"projectList\": () => (/* binding */ projectList),\n/* harmony export */   \"li\": () => (/* binding */ li),\n/* harmony export */   \"paragraph\": () => (/* binding */ paragraph)\n/* harmony export */ });\nconst projectInput = document.querySelector('#projectName');\nconst addProjectBtn = document.querySelector('#modale_addProject_btn');\nconst projectList = document.querySelector('#projects_list');\n\nconst li =  document.createElement('li');\nli.id = 'listID';\nli.className = 'text';\nconst paragraph =  document.createElement('p');\n\n\n\n//# sourceURL=webpack://my-todo-app/./src/dom.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_index_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/index.css */ \"./src/styles/index.css\");\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dom */ \"./src/dom.js\");\n\n\n\n\n// addProjectBtn.addEventListener('click', (e) => {\n//   e.preventDefault();\n\n//   let value = projectInput.value;\n//   console.log(value);\n\n//   projectLink.appendChild(li);\n//   projectList.appendChild(projectLink);\n\n// });\n\nconst addTodo = (todo, id) => {\n  // li.appendChild(paragraph);\n  \n  // li.value = '0';\n  const item = document.createElement('a');\n  item.appendChild(_dom__WEBPACK_IMPORTED_MODULE_1__.paragraph);\n  _dom__WEBPACK_IMPORTED_MODULE_1__.li.getElementsByClassName('text').id;\n  \n  _dom__WEBPACK_IMPORTED_MODULE_1__.li.appendChild(item);\n  _dom__WEBPACK_IMPORTED_MODULE_1__.projectList.appendChild(_dom__WEBPACK_IMPORTED_MODULE_1__.li);\n  _dom__WEBPACK_IMPORTED_MODULE_1__.paragraph.innerText = todo;\n  \n  console.log(_dom__WEBPACK_IMPORTED_MODULE_1__.projectList)\n\n  // li.push(todo);\n\n  const position = 'beforeend';\n\n  _dom__WEBPACK_IMPORTED_MODULE_1__.li.insertAdjacentHTML(position, item);\n   \n};\n\n_dom__WEBPACK_IMPORTED_MODULE_1__.addProjectBtn.addEventListener('click', (e) => {\n  e.preventDefault();\n\n  const toDo = _dom__WEBPACK_IMPORTED_MODULE_1__.projectInput.value;\n  if (toDo) {\n    addTodo(toDo, id);\n  }\n  _dom__WEBPACK_IMPORTED_MODULE_1__.projectInput.value = '';\n});\n\n\n\n//# sourceURL=webpack://my-todo-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_index_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/index.css */ \"./src/styles/index.css\");\n\n\n// import { projectInput, addProjectBtn,\n//   projectList, projectLink, li, paragraph } from './dom';\n\nconst listsContainer = document.querySelector('[data-lists]');\nlet lists = [{\n  id: 1,\n  name: 'name'\n}, {\n  id: 2,\n  name: 'todo'\n}];\n\nfunction render() {\n  clearElement(listsContainer);\n  lists.forEach(list => {\n    const listElement = document.createElement('li');\n    listElement.dataset.listId = list.id;\n    listElement.classList.add(\"list-name\");\n    listElement.innerText = list.name;\n    listsContainer.appendChild(listElement);\n  })\n}\n\nfunction clearElement(element) {\n  while (element.firstChild) {\n    element.removeChild(element.firstChild);\n  }\n}\n\nrender();\n\n\n//# sourceURL=webpack://my-todo-app/./src/index.js?");
 
 /***/ })
 

@@ -1,48 +1,32 @@
 import './styles/index.css';
 
-import { projectInput, addProjectBtn,
-  projectList, projectLink, li, paragraph } from './dom';
+// import { projectInput, addProjectBtn,
+//   projectList, projectLink, li, paragraph } from './dom';
 
-// addProjectBtn.addEventListener('click', (e) => {
-//   e.preventDefault();
+const listsContainer = document.querySelector('[data-lists]');
+let lists = [{
+  id: 1,
+  name: 'name'
+}, {
+  id: 2,
+  name: 'todo'
+}];
 
-//   let value = projectInput.value;
-//   console.log(value);
+function render() {
+  clearElement(listsContainer);
+  lists.forEach(list => {
+    const listElement = document.createElement('li');
+    listElement.dataset.listId = list.id;
+    listElement.classList.add("list-name");
+    listElement.innerText = list.name;
+    listsContainer.appendChild(listElement);
+  })
+}
 
-//   projectLink.appendChild(li);
-//   projectList.appendChild(projectLink);
-
-// });
-
-const addTodo = (todo, id) => {
-  // li.appendChild(paragraph);
-  
-  // li.value = '0';
-  const item = document.createElement('a');
-  item.appendChild(paragraph);
-  li.getElementsByClassName('text').id;
-  
-  li.appendChild(item);
-  projectList.appendChild(li);
-  paragraph.innerText = todo;
-  
-  console.log(projectList)
-
-  // li.push(todo);
-
-  const position = 'beforeend';
-
-  li.insertAdjacentHTML(position, item);
-   
-};
-
-addProjectBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  const toDo = projectInput.value;
-  if (toDo) {
-    addTodo(toDo, id);
+function clearElement(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
   }
-  projectInput.value = '';
-});
+}
 
+render();
