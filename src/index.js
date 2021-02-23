@@ -4,13 +4,35 @@ import './styles/index.css';
 //   projectList, projectLink, li, paragraph } from './dom';
 
 const listsContainer = document.querySelector('[data-lists]');
-let lists = [{
-  id: 1,
-  name: 'name'
-}, {
-  id: 2,
-  name: 'todo'
-}];
+const newListForm = document.querySelector('[data-new-list-form]');
+const newListInput = document.querySelector('[data-new-list-input]');
+
+const LOCAL_STORAGE_LIST_KEY = 'task.lists'; //prevents you from overwriting the lists already inside the localstorage
+let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
+
+newListForm.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const listName = newListInput.value;
+  if (listName == null || listName == '') return
+  const list = createList(listName);
+  newListInput.value = null;
+  lists.push(list);
+  saveAndRender();
+});
+
+function createList(name) {
+  return { id: Date.now().toString(), name: name, tasks: [] }
+}
+
+function saveAndRender() {
+  save();
+  render();
+}
+
+function save() {
+  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists))
+}
 
 function render() {
   clearElement(listsContainer);
