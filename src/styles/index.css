@@ -190,6 +190,8 @@ form {
 }
 
 .task {
+  display: flex;
+  justify-content: space-between;
   position: relative;
   margin-bottom: 1.25em;
 }
@@ -270,5 +272,26 @@ form {
   width: 100%;
   left: 0;
   bottom: -35px;
-  color: var(--clr-light);
+  /* color: var(--clr-light); */
+}
+
+.edit-task,
+.delete-task,
+.expand-task {
+  padding: 8px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #f4f4f4;
+}
+
+.edit-task {
+  background: green;
+}
+
+.delete-task {
+  background: red;
+}
+
+.expand-task {
+  background: rgb(99, 36, 36); 
 }

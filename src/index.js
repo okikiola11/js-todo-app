@@ -12,6 +12,11 @@ const listTitleElement = document.querySelector('[data-list-title]');
 const listCountElement = document.querySelector('[data-list-count]');
 const tasksContainer = document.querySelector('[data-tasks]');
 const taskTemplate = document.getElementById('task-template');
+const newTaskForm = document.querySelector('[data-new-task-form]');
+const newTaskInput = document.querySelector('[data-new-task-input]');
+
+const editTaskButton = document.querySelector('[data-edit-task]');
+const deleteTaskButton = document.querySelector('[data-delete-task-button]');
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'; //prevents you from overwriting the lists already inside the localstorage
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
@@ -25,11 +30,27 @@ listsContainer.addEventListener('click', (e) => {
   }
 })
 
+tasksContainer.addEventListener('click', e => {
+  if (e.target.className.toLowerCase() === 'btn delete-task') {
+    //const tasks = tasks.filter(task => task.id !== selectedList)
+    const task = createTask(name);
+    // const lists = task.filter(list => list.id !== selectedListId)
+    // const listElement = document.createElement('li');
+    //task.dataset.id = task.id;
+    // console.log(task.id);
+    const taskId = task.id;
+    taskId.addEventListener('click', (e) => {
+      console.log('hello')
+    })
+  }
+})
+
 deleteListButton.addEventListener('click', e => {
   lists = lists.filter(list => list.id !== selectedListId)
   selectedListId = null;
   saveAndRender();
-})
+});
+
 
 newListForm.addEventListener('submit', e => {
   e.preventDefault();
@@ -42,8 +63,25 @@ newListForm.addEventListener('submit', e => {
   saveAndRender();
 });
 
+newTaskForm.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const taskName = newTaskInput.value;
+  if (taskName == null || taskName == '') return
+  const task = createTask(taskName);
+  console.log(task.id)
+  newTaskInput.value = null;
+  const selectedList = lists.find(list => list.id === selectedListId);
+  selectedList.tasks.push(task);
+  saveAndRender();
+});
+
 function createList(name) {
   return { id: Date.now().toString(), name: name, tasks: [] }
+}
+
+function createTask(name) {
+  return { id: Date.now().toString(), name: name, complete: false }
 }
 
 function saveAndRender() {

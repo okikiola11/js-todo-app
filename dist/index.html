@@ -44,7 +44,6 @@
       <div class="todo-body">
         <div class="tasks" data-tasks>
           
-
           <div class="task">
               <input 
                 type="checkbox"
@@ -54,6 +53,8 @@
                 <span class="custom-checkbox"></span>
                 another task
               </label>
+              <span class="edit-task">Edit</span>
+              <span class="delete-task">Delete</span>
             </div>
             <!-- /task-2 -->
 
@@ -66,14 +67,17 @@
                   <span class="custom-checkbox"></span>
                   a third task
                 </label>
-              </div>
+                <span class="edit-task">Edit</span>
+                <span class="delete-task">Delete</span>
+            </div>
               <!-- /task-3 -->
         </div>
 
         <div class="new-task-creator">
-            <form action="">
+            <form action="" data-new-task-form>
                 <input 
                   type="text"
+                  data-new-task-input
                   class="new task"
                   placeholder="new task name"
                   aria-label="new task name"
@@ -95,6 +99,12 @@
         <label>
           <span class="custom-checkbox"></span>
         </label>
+        <div>
+          <button class="btn edit-task" data-edit-task>Edit</button>
+          <button class="btn delete-task" data-delete-task-button>Delete</button>
+          <button class="btn expand-task">Expand</button>
+        </div>
+        
       </div>
     </template>
 
