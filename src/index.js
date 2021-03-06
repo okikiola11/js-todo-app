@@ -30,20 +30,18 @@ listsContainer.addEventListener('click', (e) => {
   }
 })
 
-tasksContainer.addEventListener('click', e => {
+tasksContainer.addEventListener('click', (e) => {
   if (e.target.className.toLowerCase() === 'btn delete-task') {
     //const tasks = tasks.filter(task => task.id !== selectedList)
-    const task = createTask(name);
+    //const task = createTask(name);
     // const lists = task.filter(list => list.id !== selectedListId)
-    // const listElement = document.createElement('li');
-    //task.dataset.id = task.id;
+    
     // console.log(task.id);
-    const taskId = task.id;
-    taskId.addEventListener('click', (e) => {
-      console.log('hello')
-    })
+    const itemKey = e.target.parentElement.parentElement;
+    console.log(itemKey)
+    
   }
-})
+});
 
 deleteListButton.addEventListener('click', e => {
   lists = lists.filter(list => list.id !== selectedListId)
