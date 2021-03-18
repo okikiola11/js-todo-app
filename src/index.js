@@ -24,6 +24,9 @@ const LOCAL_STORAGE_LIST_KEY =  'task.lists';
 // create a local storage for selected list id
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY =  'task.selectedListId';
 
+// const LOCAL_STORAGE_SELECTED_TASK_ID_KEY =  'task.selectedTaskId';
+// const selectedTaskId = JSON.parse(LOCAL_STORAGE_SELECTED_TASK_ID_KEY)
+
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY)
 
@@ -38,10 +41,20 @@ tasksContainer.addEventListener('click', e => {
   if (e.target.tagName.toLowerCase() === 'input') {
     const selectedList = lists.find(list => list.id === selectedListId)
     const selectedTask = selectedList.tasks.find(task => task.id === e.target.id);
-    console.log(selectedTask)
     selectedTask.complete = e.target.checked;
     save();
     renderTaskCount(selectedList);
+  }
+
+  if (e.target.className.toLowerCase() === 'btn delete-task') {
+    const singleTask = e.target.parentElement.parentElement;
+    console.log(singleTask);
+    //tasksContainer.remove();
+    // tasks = selectedList.tasks.filter(task => task.id !==  selectedTaskId)
+    // console.log(tasks)
+    const selectedList = lists.find(list => list.id === selectedListId)
+    const selectedTask = selectedList.tasks.find(task => task.id === e.target.taskId);
+    console.log(selectedTask)
   }
 })
 
@@ -99,7 +112,7 @@ function render() {
   renderLists();
 
   const selectedList = lists.find(list => list.id === selectedListId)
-  if (selectedListId == null) {
+  if (selectedList == null) {
     listDisplayContainer.style.display = 'none'
   } else {
     listDisplayContainer.style.display = '';
@@ -117,7 +130,9 @@ function renderTasks(selectedList) {
   selectedList.tasks.forEach(task => {
     const taskElement = document.importNode(taskTemplate.content, true);
     // get each task id
-    // taskElement.dataset.taskId = task.id;
+    const taskDiv = document.createElement('div');
+    taskDiv.dataset.taskId = task.id;
+    taskDiv.innerText = 'hello'
     const checkbox = taskElement.querySelector('input');
     checkbox.id = task.id;
     checkbox.checked = task.complete;
@@ -125,6 +140,7 @@ function renderTasks(selectedList) {
     const label = taskElement.querySelector('label');
     label.htmlFor = task.id;
     label.append(task.name);
+    taskElement.appendChild(taskDiv);
     tasksContainer.appendChild(taskElement);
     // const selectPriorBox = taskElement.getElementById('priority');
     // selectPriorBox.value = task.value;
