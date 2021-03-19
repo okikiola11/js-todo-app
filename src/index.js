@@ -49,12 +49,9 @@ tasksContainer.addEventListener('click', e => {
   if (e.target.className.toLowerCase() === 'btn delete-task') {
     const singleTask = e.target.parentElement.parentElement;
     console.log(singleTask);
-    //tasksContainer.remove();
-    // tasks = selectedList.tasks.filter(task => task.id !==  selectedTaskId)
-    // console.log(tasks)
     const selectedList = lists.find(list => list.id === selectedListId)
-    const selectedTask = selectedList.tasks.find(task => task.id === e.target.taskId);
-    console.log(selectedTask)
+    selectedList.tasks = selectedList.tasks.filter(task => !task.complete);
+    saveAndRender();
   }
 })
 
@@ -131,8 +128,10 @@ function renderTasks(selectedList) {
     const taskElement = document.importNode(taskTemplate.content, true);
     // get each task id
     const taskDiv = document.createElement('div');
-    taskDiv.dataset.taskId = task.id;
-    taskDiv.innerText = 'hello'
+    //taskDiv.dataset.taskId = task.id;
+    console.log(taskDiv)
+    //taskDiv.dataset.taskId = task.id;
+    //taskElement.dataset.taskId = task.id
     const checkbox = taskElement.querySelector('input');
     checkbox.id = task.id;
     checkbox.checked = task.complete;
@@ -140,7 +139,6 @@ function renderTasks(selectedList) {
     const label = taskElement.querySelector('label');
     label.htmlFor = task.id;
     label.append(task.name);
-    taskElement.appendChild(taskDiv);
     tasksContainer.appendChild(taskElement);
     // const selectPriorBox = taskElement.getElementById('priority');
     // selectPriorBox.value = task.value;
