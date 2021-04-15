@@ -128,20 +128,13 @@ function renderTasks(selectedList) {
     const taskElement = document.importNode(taskTemplate.content, true);
     // get each task id
     const taskDiv = document.createElement('div');
-    //taskDiv.dataset.taskId = task.id;
-    console.log(taskDiv)
-    //taskDiv.dataset.taskId = task.id;
-    //taskElement.dataset.taskId = task.id
     const checkbox = taskElement.querySelector('input');
     checkbox.id = task.id;
     checkbox.checked = task.complete;
-    // checkbox.priority = task.priority;
     const label = taskElement.querySelector('label');
     label.htmlFor = task.id;
     label.append(task.name);
     tasksContainer.appendChild(taskElement);
-    // const selectPriorBox = taskElement.getElementById('priority');
-    // selectPriorBox.value = task.value;
   })
 }
 
@@ -171,3 +164,5 @@ function clearElement(element) {
 }
 
 render();
+console.log();
+console.log();
